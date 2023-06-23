@@ -5,6 +5,29 @@ namespace SomeExtensionsTests
     public class DateTimeExtensionsTests
     {
         [Fact]
+        public void day_shift_start_test()
+        {
+            var baseDate = new DateTime(2023, 06, 22).Date;
+            var date0601 = baseDate + TimeSpan.Parse("06:01:01");
+            var date1359 = baseDate + TimeSpan.Parse("13:59:01");
+            var date1400 = baseDate.AddHours(14);
+            var date1401 = baseDate.AddHours(14).AddMinutes(1);
+            var date2200 = baseDate.AddHours(22);
+            var date2359 = baseDate.AddHours(22);
+            var date0101 = baseDate.AddDays(1).AddHours(1).AddMinutes(1);
+            var date0559 = baseDate.AddDays(1).AddHours(1).AddMinutes(1);
+
+            Assert.Equal(baseDate.AddHours(6), date0601.DayShiftStart());
+            Assert.Equal(baseDate.AddHours(6), date1359.DayShiftStart());
+            Assert.Equal(baseDate.AddHours(6), date1400.DayShiftStart());
+            Assert.Equal(baseDate.AddHours(6), date1401.DayShiftStart());
+            Assert.Equal(baseDate.AddHours(6), date2200.DayShiftStart());
+            Assert.Equal(baseDate.AddHours(6), date2359.DayShiftStart());
+            Assert.Equal(baseDate.AddHours(6), date0101.DayShiftStart());
+            Assert.Equal(baseDate.AddHours(6), date0559.DayShiftStart());
+        }
+
+        [Fact]
         public void get_date_int_test()
         {
             var baseDate = new DateTime(2023, 06, 22, 12, 11, 33);

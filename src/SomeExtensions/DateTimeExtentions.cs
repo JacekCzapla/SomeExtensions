@@ -205,7 +205,7 @@ namespace SomeExtensions
         /// <returns></returns>
         public static DateTime DayShiftStart(this DateTime date, int shiftStartHour = 6)
         {
-            return new DateTime(date.Year, date.Month, date.Day, shiftStartHour, 0, 0);
+            return date.Hour < 6 ? new DateTime(date.Year, date.Month, date.Day-1, shiftStartHour, 0, 0) : new DateTime(date.Year, date.Month, date.Day, shiftStartHour, 0, 0);
         }
 
         /// <summary>
