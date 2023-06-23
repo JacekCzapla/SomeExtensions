@@ -28,6 +28,29 @@ namespace SomeExtensionsTests
         }
 
         [Fact]
+        public void day_shift_end_test()
+        {
+            var baseDate = new DateTime(2023, 06, 22).Date;
+            var date0601 = baseDate + TimeSpan.Parse("06:01:01");
+            var date1359 = baseDate + TimeSpan.Parse("13:59:01");
+            var date1400 = baseDate.AddHours(14);
+            var date1401 = baseDate.AddHours(14).AddMinutes(1);
+            var date2200 = baseDate.AddHours(22);
+            var date2359 = baseDate.AddHours(22);
+            var date0101 = baseDate.AddHours(1).AddMinutes(1);
+            var date0559 = baseDate.AddHours(1).AddMinutes(1);
+
+            Assert.Equal(baseDate.AddDays(1).AddHours(6), date0601.DayShiftEnd());
+            Assert.Equal(baseDate.AddDays(1).AddHours(6), date1359.DayShiftEnd());
+            Assert.Equal(baseDate.AddDays(1).AddHours(6), date1400.DayShiftEnd());
+            Assert.Equal(baseDate.AddDays(1).AddHours(6), date1401.DayShiftEnd());
+            Assert.Equal(baseDate.AddDays(1).AddHours(6), date2200.DayShiftEnd());
+            Assert.Equal(baseDate.AddDays(1).AddHours(6), date2359.DayShiftEnd());
+            Assert.Equal(baseDate.AddHours(6), date0101.DayShiftEnd());
+            Assert.Equal(baseDate.AddHours(6), date0559.DayShiftEnd());
+        }
+
+        [Fact]
         public void get_date_int_test()
         {
             var baseDate = new DateTime(2023, 06, 22, 12, 11, 33);

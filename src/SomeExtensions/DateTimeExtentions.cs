@@ -214,9 +214,10 @@ namespace SomeExtensions
         /// <param name="dat"></param>
         /// <param name="shiftStartHour"></param>
         /// <returns></returns>
-        public static DateTime DayShiftEnd(this DateTime dat, int shiftStartHour = 6)
+        public static DateTime DayShiftEnd(this DateTime date, int shiftStartHour = 6)
         {
-            return dat.AddDays(1).Date.Add(new TimeSpan(0, shiftStartHour - 1, 59, 59, 999));
+            return date.Hour < 6 ? new DateTime(date.Year, date.Month, date.Day, shiftStartHour, 0, 0) : new DateTime(date.Year, date.Month, date.Day+1, shiftStartHour, 0, 0);
+            return date.AddDays(1).Date.Add(new TimeSpan(0, shiftStartHour - 1, 59, 59, 999));
         }
 
         /// <summary>
