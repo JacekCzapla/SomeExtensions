@@ -25,8 +25,7 @@ namespace SomeExtensions
 
         public static bool ArrayContains(this int[] s, int x)
         {
-            bool res = s.Contains(x);
-            return res;
+            return s.Contains(x);
         }
     }
 }
