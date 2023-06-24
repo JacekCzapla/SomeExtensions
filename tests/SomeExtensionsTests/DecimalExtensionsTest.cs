@@ -4,7 +4,12 @@ namespace SomeExtensionsTests
 {
     public class LongExtensionsTest
     {
-
+        [Fact]
+        public void t()
+        {
+            long i = 1;
+            i.ToDateTime();
+        }
     }
 
     public class DecimalExtensionsTest

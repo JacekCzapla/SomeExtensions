@@ -4,7 +4,7 @@
     <TargetFrameworks>netstandard2.1;net48;net7;.net6</TargetFrameworks>
     <Nullable>disable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-	 <Version>1.0.0.6</Version>
+	 <Version>1.0.0.7</Version>
     <Title>SomeExtensions</Title>
     <Copyright>Jacek Czapla 2023</Copyright>
     <PackageReadmeFile>README.md</PackageReadmeFile>
