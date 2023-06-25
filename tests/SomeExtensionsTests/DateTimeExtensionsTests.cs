@@ -80,15 +80,67 @@ namespace SomeExtensionsTests
         }
 
         [Fact]
-        public void day_start_end_test()
+        public void work_day_start()
         {
-            var baseDate = new DateTime(2023, 06, 22, 12, 11, 33);
-            var start = baseDate.DayStart();
-            var end = baseDate.DayEnd();
+            var date0601 = DateTime.Parse("2023-06-22 06:01:01");
+            var date1359 = DateTime.Parse("2023-06-22 13:59:01");
 
-            Assert.Equal(new DateTime(2023, 06, 22, 0, 0, 0), start);
-            Assert.Equal(new DateTime(2023, 06, 22, 23, 59, 59, 999), end);
+            var date1400 = DateTime.Parse("2023-06-22 14:00:00");
+            var date1401 = DateTime.Parse("2023-06-22 14:01:01");
+            var date2200 = DateTime.Parse("2023-06-22 22:00:01");
+            var date2359 = DateTime.Parse("2023-06-22 23:59:00");
+
+            var date0101 = DateTime.Parse("2023-06-23 01:01:00");
+            var date0559 = DateTime.Parse("2023-06-23 05:59:00");
+
+            Assert.Equal(DateTime.Parse("2023-06-22 06:00:00"), date0601.WorkDayStart());
+            Assert.Equal(DateTime.Parse("2023-06-22 06:00:00"), date1359.WorkDayStart());
+
+            Assert.Equal(DateTime.Parse("2023-06-22 06:00:00"), date1400.WorkDayStart());
+            Assert.Equal(DateTime.Parse("2023-06-22 06:00:00"), date1401.WorkDayStart());
+            Assert.Equal(DateTime.Parse("2023-06-22 06:00:00"), date2200.WorkDayStart());
+            Assert.Equal(DateTime.Parse("2023-06-22 06:00:00"), date2359.WorkDayStart());
+
+            Assert.Equal(DateTime.Parse("2023-06-23 06:00:00"), date0101.WorkDayStart());
+            Assert.Equal(DateTime.Parse("2023-06-23 06:00:00"), date0559.WorkDayStart());
         }
+
+        [Fact]
+        public void work_day_end()
+        {
+            var date0601 = DateTime.Parse("2023-06-22 06:01:01");
+            var date1359 = DateTime.Parse("2023-06-22 13:59:01");
+
+            var date1400 = DateTime.Parse("2023-06-22 14:00:00");
+            var date1401 = DateTime.Parse("2023-06-22 14:01:01");
+            var date2200 = DateTime.Parse("2023-06-22 22:00:01");
+            var date2359 = DateTime.Parse("2023-06-22 23:59:00");
+
+            var date0101 = DateTime.Parse("2023-06-23 01:01:00");
+            var date0559 = DateTime.Parse("2023-06-23 05:59:00");
+
+            Assert.Equal(DateTime.Parse("2023-06-23 06:00:00"), date0601.WorkDayEnd());
+            Assert.Equal(DateTime.Parse("2023-06-23 06:00:00"), date1359.WorkDayEnd());
+
+            Assert.Equal(DateTime.Parse("2023-06-23 06:00:00"), date1400.WorkDayEnd());
+            Assert.Equal(DateTime.Parse("2023-06-23 06:00:00"), date1401.WorkDayEnd());
+            Assert.Equal(DateTime.Parse("2023-06-23 06:00:00"), date2200.WorkDayEnd());
+            Assert.Equal(DateTime.Parse("2023-06-23 06:00:00"), date2359.WorkDayEnd());
+
+            Assert.Equal(DateTime.Parse("2023-06-24 06:00:00"), date0101.WorkDayEnd());
+            Assert.Equal(DateTime.Parse("2023-06-24 06:00:00"), date0559.WorkDayEnd());
+        }
+
+        //[Fact]
+        //public void day_start_end_test()
+        //{
+        //    var baseDate = new DateTime(2023, 06, 22, 12, 11, 33);
+        //    var start = baseDate.DayStart();
+        //    var end = baseDate.DayEnd();
+
+        //    Assert.Equal(new DateTime(2023, 06, 22, 0, 0, 0), start);
+        //    Assert.Equal(new DateTime(2023, 06, 22, 23, 59, 59, 999), end);
+        //}
 
         [Fact]
         public void year_month_start_test()

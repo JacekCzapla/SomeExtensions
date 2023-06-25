@@ -225,7 +225,7 @@ namespace SomeExtensions
         /// <returns></returns>
         public static DateTime WorkDayEnd(this DateTime date, int shiftStartHour = 6)
         {
-            return date.Date.AddDays(-1).AddHours(6);
+            return date.Date.AddDays(1).AddHours(6);
         }
 
         /// <summary>
