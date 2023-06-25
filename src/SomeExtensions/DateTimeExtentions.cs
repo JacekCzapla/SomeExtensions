@@ -191,8 +191,6 @@ namespace SomeExtensions
                 : new DateTime(date.Year, date.Month, date.Day, shiftStartHour, 0, 0);
         }
 
-
-
         /// <summary>
         /// Returns shift end datetime for all day
         /// </summary>
@@ -207,10 +205,10 @@ namespace SomeExtensions
         }
 
         /// <summary>
-        /// Returns shift start datetime for all day if date is only Date w/o hour
+        /// Returns day start datetime for all day if date is only Date w/o hour, eg. 2023-07-12 => 2023-07-12 06:00:00
         /// </summary>
         /// <param name="date"></param>
-        /// <param name="shiftStartHour"></param>
+        /// <param name="shiftStartHour">Shift start hour 6 -> 06:00:00</param>
         /// <returns></returns>
         public static DateTime WorkDayStart(this DateTime date, int shiftStartHour = 6)
         {
@@ -218,10 +216,10 @@ namespace SomeExtensions
         }
 
         /// <summary>
-        /// Returns shift end datetime for all day if date is only Date w/o hour
+        /// Returns day end datetime for all day if date is only Date w/o hour, eg. 2023-07-12 => 2023-08-12 06:00:00
         /// </summary>
-        /// <param name="dat"></param>
-        /// <param name="shiftStartHour"></param>
+        /// <param name="date"></param>
+        /// <param name="shiftStartHour">Shift start hour 6 -> 06:00:00</param>
         /// <returns></returns>
         public static DateTime WorkDayEnd(this DateTime date, int shiftStartHour = 6)
         {
