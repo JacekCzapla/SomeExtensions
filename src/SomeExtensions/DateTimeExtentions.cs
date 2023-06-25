@@ -39,14 +39,16 @@ namespace SomeExtensions
         }
 
         /// <summary>
-        /// Returns Date with 0 hour 
+        /// Returns Date with 0 hour
         /// </summary>
         /// <param name="d"></param>
         /// <returns></returns>
+        [Obsolete("Dont use", true)]
         public static DateTime DayStart(this DateTime d)
         {
             return d.Date;
         }
+        [Obsolete("Dont use", true)]
         public static DateTime DayEnd(this DateTime d)
         {
             return d.Date.AddDays(1).AddMilliseconds(-1);
