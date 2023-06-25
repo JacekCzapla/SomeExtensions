@@ -15,20 +15,27 @@ namespace SomeExtensions
         {
             return d == null ? 0 : int.Parse(d.Value.ToString("yyMMdd"));
         }
-
+        [Obsolete("Use GetTimeInt")]
         public static int GetHourInt(this DateTime d)
         {
             return int.Parse(d.ToString("HHmmss"));
         }
 
+        
+        [Obsolete("Use GetTimeInt")]
         public static int GetHourInt(this DateTime? d)
         {
             return d == null ? 0 : int.Parse(d.Value.ToString("HHmmss"));
         }
 
-        public static DateTime DaysAgo(this int i)
+        public static int GetTimeInt(this DateTime d)
         {
-            return DateTime.Now.Date.AddDays(-i);
+            return int.Parse(d.ToString("HHmmss"));
+        }
+
+        public static int GetTimeInt(this DateTime? d)
+        {
+            return d == null ? 0 : int.Parse(d.Value.ToString("HHmmss"));
         }
 
         /// <summary>
@@ -178,7 +185,7 @@ namespace SomeExtensions
         public static DateTime DayShiftStart(this DateTime date, int shiftStartHour = 6)
         {
             return date.Hour < 6 
-                ? new DateTime(date.Year, date.Month, date.Day-1, shiftStartHour, 0, 0) 
+                ? new DateTime(date.Year, date.Month, date.Day-1, shiftStartHour, 0, 0)
                 : new DateTime(date.Year, date.Month, date.Day, shiftStartHour, 0, 0);
         }
 
@@ -195,6 +202,28 @@ namespace SomeExtensions
             return date.Hour < 6 
                 ? new DateTime(date.Year, date.Month, date.Day, shiftStartHour, 0, 0) 
                 : new DateTime(date.Year, date.Month, date.Day+1, shiftStartHour, 0, 0);
+        }
+
+        /// <summary>
+        /// Returns shift start datetime for all day if date is only Date w/o hour
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="shiftStartHour"></param>
+        /// <returns></returns>
+        public static DateTime DayStart(this DateTime date, int shiftStartHour = 6)
+        {
+            return date.Date.AddHours(6);
+        }
+
+        /// <summary>
+        /// Returns shift end datetime for all day if date is only Date w/o hour
+        /// </summary>
+        /// <param name="dat"></param>
+        /// <param name="shiftStartHour"></param>
+        /// <returns></returns>
+        public static DateTime DayEnd(this DateTime date, int shiftStartHour = 6)
+        {
+            return date.Date.AddDays(-1).AddHours(6);
         }
 
         /// <summary>

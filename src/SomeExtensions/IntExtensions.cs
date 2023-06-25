@@ -5,6 +5,11 @@ namespace SomeExtensions
 {
     public static class IntExtensions
     {
+        public static DateTime DaysAgo(this int i)
+        {
+            return DateTime.Now.Date.AddDays(-i);
+        }
+
         public static bool InSet(this int x, params int[] set)
         {
             return set.Contains(x);
