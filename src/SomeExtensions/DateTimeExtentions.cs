@@ -212,7 +212,7 @@ namespace SomeExtensions
         /// <param name="date"></param>
         /// <param name="shiftStartHour"></param>
         /// <returns></returns>
-        public static DateTime DayStart(this DateTime date, int shiftStartHour = 6)
+        public static DateTime WorkDayStart(this DateTime date, int shiftStartHour = 6)
         {
             return date.Date.AddHours(6);
         }
@@ -223,7 +223,7 @@ namespace SomeExtensions
         /// <param name="dat"></param>
         /// <param name="shiftStartHour"></param>
         /// <returns></returns>
-        public static DateTime DayEnd(this DateTime date, int shiftStartHour = 6)
+        public static DateTime WorkDayEnd(this DateTime date, int shiftStartHour = 6)
         {
             return date.Date.AddDays(-1).AddHours(6);
         }
