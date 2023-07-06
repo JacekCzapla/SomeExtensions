@@ -186,9 +186,8 @@ namespace SomeExtensions
         /// <returns></returns>
         public static DateTime DayShiftStart(this DateTime date, int shiftStartHour = 6)
         {
-            return date.Hour < 6 
-                ? new DateTime(date.Year, date.Month, date.Day-1, shiftStartHour, 0, 0)
-                : new DateTime(date.Year, date.Month, date.Day, shiftStartHour, 0, 0);
+            var ldate = date.Hour < 6 ? date.AddDays(-1) : date;
+            return new DateTime(ldate.Year, ldate.Month, ldate.Day, shiftStartHour, 0, 0);
         }
 
         /// <summary>
@@ -199,9 +198,8 @@ namespace SomeExtensions
         /// <returns></returns>
         public static DateTime DayShiftEnd(this DateTime date, int shiftStartHour = 6)
         {
-            return date.Hour < 6 
-                ? new DateTime(date.Year, date.Month, date.Day, shiftStartHour, 0, 0) 
-                : new DateTime(date.Year, date.Month, date.Day+1, shiftStartHour, 0, 0);
+            var ldate = date.Hour < 6 ? date.AddDays(1) : date;
+            return new DateTime(ldate.Year, ldate.Month, ldate.Day, shiftStartHour, 0, 0);
         }
 
         /// <summary>
