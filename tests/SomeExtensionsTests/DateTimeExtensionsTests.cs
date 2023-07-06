@@ -9,6 +9,7 @@ namespace SomeExtensionsTests
         public void day_shift_start_test()
         {
             //var baseDate = new DateTime(2023, 06, 22).Date;
+            var date_01_01_0501 = DateTime.Parse("2023-01-01 05:01:01");
 
             var date0601 = DateTime.Parse("2023-06-22 06:01:01");
             var date1359 = DateTime.Parse("2023-06-22 13:59:01");
@@ -20,6 +21,8 @@ namespace SomeExtensionsTests
 
             var date0101 = DateTime.Parse("2023-06-23 01:01:00");
             var date0559 = DateTime.Parse("2023-06-23 05:59:00");
+
+            Assert.Equal(DateTime.Parse("2022-12-31 06:00:00"), date_01_01_0501.DayShiftStart());
 
             Assert.Equal(DateTime.Parse("2023-06-22 06:00:00"), date0601.DayShiftStart());
             Assert.Equal(DateTime.Parse("2023-06-22 06:00:00"), date1359.DayShiftStart());
