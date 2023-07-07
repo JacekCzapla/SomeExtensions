@@ -39,19 +39,20 @@ namespace SomeExtensions
         }
 
         /// <summary>
-        /// Returns Date with 0 hour
+        /// Returns Date with startHour as DateTime hour
         /// </summary>
         /// <param name="d"></param>
+        /// <param name="startHour">Start hour of day</param>
         /// <returns></returns>
-        [Obsolete("Dont use", true)]
-        public static DateTime DayStart(this DateTime d)
+        
+        public static DateTime DayStart(this DateTime d, int startHour = 0)
         {
-            return d.Date;
+            return d.Date.AddHours(startHour);
         }
-        [Obsolete("Dont use", true)]
-        public static DateTime DayEnd(this DateTime d)
+        
+        public static DateTime DayEnd(this DateTime d, int startHour = 0)
         {
-            return d.Date.AddDays(1).AddMilliseconds(-1);
+            return d.Date.AddDays(1).AddHours(startHour);
         }
 
         /// <summary>
@@ -179,7 +180,7 @@ namespace SomeExtensions
         }
 
         /// <summary>
-        /// Returns shift start datetime for all day
+        /// Returns shift start datetime for all day. Use ONLY when DateTime has hour > 0
         /// </summary>
         /// <param name="date"></param>
         /// <param name="shiftStartHour"></param>
@@ -191,7 +192,7 @@ namespace SomeExtensions
         }
 
         /// <summary>
-        /// Returns shift end datetime for all day
+        /// Returns shift end datetime for all day. Use ONLY when DateTime has hour > 0
         /// </summary>
         /// <param name="dat"></param>
         /// <param name="shiftStartHour"></param>
